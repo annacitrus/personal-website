@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Anna Citron</title>
+    <style>
+        body { max-width: 760px; margin: 3rem auto; padding: 0 1rem; font: 16px/1.6 system-ui, sans-serif; color: #222; }
+        a { color: inherit; text-underline-offset: 3px; }
+        nav { margin-bottom: 2.5rem; }
+        h1 { margin-bottom: .25rem; font-size: 2.25rem; }
+        h2 { margin: 0 0 .75rem; font-size: 1.2rem; }
+        h3 { margin: 0; font-size: 1rem; }
+        p { margin: .25rem 0; }
+        main > header, section { margin-bottom: 2.5rem; }
+        article { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; align-items: start; border-top: 1px solid #ccc; padding: 1.5rem 0; }
+        .project-info { overflow-wrap: anywhere; }
+        .project { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; align-items: baseline; }
+        .details { color: #555; font-size: .9rem; }
+        ul { padding-left: 1.25rem; }
+        li + li { margin-top: .4rem; }
+        .demo { margin: 0; }
+        .demo video, .demo-placeholder { display: block; width: 100%; aspect-ratio: 16 / 9; background: #f5f5f5; }
+        .demo-placeholder { display: grid; place-items: center; color: #555; }
+        @media (min-width: 700px) {
+            article { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <nav aria-label="Home"><a href="index.html">&larr; Home</a></nav>
+
+    <main>
+        <header>
+            <h1>Projects</h1>
+        </header>
+
+        <!-- Replace bracketed placeholders with project details.
+             Copy an article within its section to add another project. -->
+        <section aria-labelledby="software">
+            <h2 id="software">Software</h2>
+            <article>
+                <div class="project-info">
+                    <header class="project">
+                        <h3>[Project name]</h3>
+                        <p class="details">[Month Year]</p>
+                    </header>
+                    <p class="details">Stack: [Languages, frameworks, and tools]</p>
+                    <p>[What the project does and the problem it solves.]</p>
+                    <ul>
+                        <li>[Describe a key feature and how you built it.]</li>
+                        <li>[Share a result, improvement, or something you learned.]</li>
+                    </ul>
+                    <!-- Turn each URL into an anchor when a real destination is available. -->
+                    <p>Code: [Repository URL] &middot; Demo: [Live demo URL]</p>
+                </div>
+                <figure class="demo">
+                    <div class="demo-placeholder">Video demo coming soon</div>
+                    <!-- Replace the placeholder above with your video:
+                    <video controls playsinline preload="metadata" src="videos/software-demo.mp4" aria-label="Software project demo"></video>
+                    -->
+                </figure>
+            </article>
+        </section>
+
+        <section aria-labelledby="hardware">
+            <h2 id="hardware">Hardware</h2>
+            <article>
+                <div class="project-info">
+                    <header class="project">
+                        <h3>[Project name]</h3>
+                        <p class="details">[Month Year]</p>
+                    </header>
+                    <p class="details">Components: [Microcontroller, sensors, and other parts]</p>
+                    <p class="details">Tools &amp; firmware: [Design tools and programming languages]</p>
+                    <p>[What the device does and the problem it solves.]</p>
+                    <ul>
+                        <li>[Describe what you designed, assembled, or programmed.]</li>
+                        <li>[Explain how you tested it and what you learned.]</li>
+                    </ul>
+                    <p>Build notes: [Documentation URL] &middot; Code: [Firmware repository URL]</p>
+                </div>
+                <figure class="demo">
+                    <div class="demo-placeholder">Video demo coming soon</div>
+                    <!-- Replace the placeholder above with your video:
+                    <video controls playsinline preload="metadata" src="videos/hardware-demo.mp4" aria-label="Hardware project demo"></video>
+                    -->
+                </figure>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
