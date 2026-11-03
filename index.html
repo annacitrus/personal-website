@@ -12,7 +12,7 @@
         h2 { margin: 0 0 .75rem; font-size: 1.2rem; }
         h3 { margin: 0; font-size: 1rem; }
         p { margin: .25rem 0; }
-        main > header { margin-bottom: 2.5rem; }
+        body > header { margin-bottom: 2.5rem; }
         article, section { border-top: 1px solid #ccc; padding: 1.5rem 0; }
         .role { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; align-items: baseline; }
         .details { color: #555; font-size: .9rem; }
@@ -21,12 +21,61 @@
         .hidden{
             font-size:1px;
         }
+        .followers strong { font-size: 1.5rem; }
+        .reel-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 62%; gap: .75rem; margin-top: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; }
+        .reel-grid figure { margin: 0; scroll-snap-align: start; }
+        .reel-grid video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; background: #f5f5f5; }
+        .reel-grid figcaption { margin-top: .4rem; }
+        .reel-grid + p, .photo-grid + p { margin-top: 1rem; }
+        .photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
+        .photo-grid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; background: #f5f5f5; }
+        @media (min-width: 560px) {
+            .reel-grid { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; }
+        }
     </style>
 </head>
 <body>
-    <h1>Anna Citron</h1>
+    <header>
+        <h1>Anna Citron</h1>
+        <p>Hello! I am a builder, content creator, and student (at Purdue University).</p>
+    </header>
+
+    <!-- Numbers are refreshed from stats.json, which .github/workflows/update-stats.yml keeps current.
+         To swap a video, change its files in videos/, its figure here, and its key in stats.json. -->
+    <section aria-label="Instagram videos">
+        <div class="role">
+            <h2><a href="https://www.instagram.com/annacitrus">@annacitrus</a></h2>
+            <p class="followers"><strong data-stat="followers">1,807</strong> followers</p>
+        </div>
+        <div class="reel-grid">
+            <figure>
+                <video controls playsinline preload="none" width="720" height="1280" poster="videos/DesBgHXxbR7.jpg" src="videos/DesBgHXxbR7.mp4" aria-label="love electronics"></video>
+                <figcaption class="details"><a href="https://www.instagram.com/p/DesBgHXxbR7/"><span data-stat="DesBgHXxbR7">778,491</span> views</a></figcaption>
+            </figure>
+            <figure>
+                <video controls playsinline preload="none" width="720" height="1280" poster="videos/De2VRCCRQQS.jpg" src="videos/De2VRCCRQQS.mp4" aria-label="u can learn electronics literally for free"></video>
+                <figcaption class="details"><a href="https://www.instagram.com/p/De2VRCCRQQS/"><span data-stat="De2VRCCRQQS">41,473</span> views</a></figcaption>
+            </figure>
+            <figure>
+                <video controls playsinline preload="none" width="720" height="1280" poster="videos/DWE3km9jqR5.jpg" src="videos/DWE3km9jqR5.mp4" aria-label="how i became the most unathletic varsity captain in schools history"></video>
+                <figcaption class="details"><a href="https://www.instagram.com/reel/DWE3km9jqR5/"><span data-stat="DWE3km9jqR5">179,249</span> views</a></figcaption>
+            </figure>
+        </div>
+        <p><a href="growth.html">How I&rsquo;m growing my account</a></p>
+    </section>
+
+    <section aria-labelledby="starkhacks">
+        <h2 id="starkhacks"><a href="https://starkhacks.com/">StarkHacks</a></h2>
+        <p>Headed marketing, getting over <strong>2 million views</strong> on Instagram &amp; <strong>3,000 applicants</strong> from 10 countries &mdash; the <strong>largest</strong> hardware hackathon in the world.</p>
+        <div class="photo-grid">
+            <img src="images/starkhacks-logo.png" width="553" height="723" alt="StarkHacks logo">
+            <img src="images/starkhacks-robot.jpg" width="554" height="554" alt="A humanoid robot mid-move on the StarkHacks floor">
+            <img src="images/starkhacks-crowd.jpg" width="547" height="365" alt="Hackers building at rows of tables inside the StarkHacks hangar">
+        </div>
+        <p><a href="starkhacks.html">How I grew StarkHacks</a></p>
+    </section>
+
     <h2> This website is a work in progress </h2>
-    <p>Hello! I am a builder, content creator, and student (at Purdue University).</p>
     <p><a href="experience.html">Check out my experience</a></p>
     <!-- <p><a href="projects.html">Check out my projects</a></p> -->
     <!-- <p><a href="ugc-portfolio.html">Check out my UGC portfolio</a></p> -->
@@ -34,7 +83,25 @@
 	<p> See my Instagram where I document what I build <a href="https://www.instagram.com/annacitrus"> here </a> </p>
 	<a href = "https://github.com/annacitrus?tab=repositories"> github </a>
     <!-- <p><a href="easter-egg.html">Easter Egg</a></p> -->
-     <a class="hidden" href ="ghostpost-privacy.html"> </a>
+     <a class="hidden" href="ghostpost-privacy.html"> </a>
      <a class="hidden" href="ghostpost-terms.html"> </a>
+
+    <script>
+        const videos = document.querySelectorAll('.reel-grid video');
+        videos.forEach(video => video.addEventListener('play', () => {
+            videos.forEach(other => { if (other !== video) other.pause(); });
+        }));
+
+        fetch('stats.json', { cache: 'no-store' })
+            .then(response => response.json())
+            .then(stats => {
+                document.querySelectorAll('[data-stat]').forEach(el => {
+                    const key = el.dataset.stat;
+                    const value = key === 'followers' ? stats.followers : stats.views[key];
+                    if (typeof value === 'number') el.textContent = value.toLocaleString('en-US');
+                });
+            })
+            .catch(() => {});
+    </script>
 </body>
 </html>
