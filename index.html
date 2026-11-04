@@ -40,21 +40,21 @@
         <p>Hello! I am a builder, content creator, and student (at Purdue University).</p>
     </header>
 
-    <!-- Numbers are refreshed from stats.json, which .github/workflows/update-stats.yml keeps current.
+    <!-- Numbers come from stats.json, which is updated by hand (followers, totalViews, and each featured video under views).
          To swap a video, change its files in videos/, its figure here, and its key in stats.json. -->
     <section aria-label="Instagram videos">
         <div class="role">
             <h2><a href="https://www.instagram.com/annacitrus">@annacitrus</a></h2>
-            <p class="followers"><strong data-stat="followers">1,807</strong> followers</p>
+            <p class="followers"><strong data-stat="followers">2,135</strong> followers &middot; <strong data-stat="totalViews">999,525</strong> total views</p>
         </div>
         <div class="reel-grid">
             <figure>
                 <video controls playsinline preload="none" width="720" height="1280" poster="videos/DesBgHXxbR7.jpg" src="videos/DesBgHXxbR7.mp4" aria-label="love electronics"></video>
-                <figcaption class="details"><a href="https://www.instagram.com/p/DesBgHXxbR7/"><span data-stat="DesBgHXxbR7">778,491</span> views</a></figcaption>
+                <figcaption class="details"><a href="https://www.instagram.com/p/DesBgHXxbR7/"><span data-stat="DesBgHXxbR7">1 million</span> views</a></figcaption>
             </figure>
             <figure>
                 <video controls playsinline preload="none" width="720" height="1280" poster="videos/De2VRCCRQQS.jpg" src="videos/De2VRCCRQQS.mp4" aria-label="u can learn electronics literally for free"></video>
-                <figcaption class="details"><a href="https://www.instagram.com/p/De2VRCCRQQS/"><span data-stat="De2VRCCRQQS">41,473</span> views</a></figcaption>
+                <figcaption class="details"><a href="https://www.instagram.com/p/De2VRCCRQQS/"><span data-stat="De2VRCCRQQS">48,200</span> views</a></figcaption>
             </figure>
             <figure>
                 <video controls playsinline preload="none" width="720" height="1280" poster="videos/DWE3km9jqR5.jpg" src="videos/DWE3km9jqR5.mp4" aria-label="how i became the most unathletic varsity captain in schools history"></video>
@@ -97,7 +97,7 @@
             .then(stats => {
                 document.querySelectorAll('[data-stat]').forEach(el => {
                     const key = el.dataset.stat;
-                    const value = key === 'followers' ? stats.followers : stats.views[key];
+                    const value = key in stats && key !== 'views' ? stats[key] : stats.views[key];
                     if (typeof value === 'number') el.textContent = value.toLocaleString('en-US');
                 });
             })
