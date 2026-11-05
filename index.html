@@ -1,137 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Personal Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna Citron</title>
+    <meta name="description" content="Anna Citron — maker, content creator, and student at Purdue.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Pixelify+Sans:wght@500;700&family=Space+Mono&display=swap" rel="stylesheet">
     <style>
-        body { max-width: 760px; margin: 3rem auto; padding: 0 1rem; font: 16px/1.6 system-ui, sans-serif; color: #222; }
-        a { color: inherit; text-underline-offset: 3px; }
-        nav { margin-bottom: 2.5rem; }
-        h1 { margin-bottom: .25rem; font-size: 2.25rem; }
-        h2 { margin: 0 0 .75rem; font-size: 1.2rem; }
-        h3 { margin: 0; font-size: 1rem; }
-        p { margin: .25rem 0; }
-        body > header { margin-bottom: 2.5rem; }
-        article, section { border-top: 1px solid #ccc; padding: 1.5rem 0; }
-        .role { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; align-items: baseline; }
-        .details { color: #555; font-size: .9rem; }
-        ul { padding-left: 1.25rem; margin-bottom: 0; }
-        li + li { margin-top: .4rem; }
-        .hidden{
-            font-size:1px;
+        :root {
+            --bg: #111;
+            --text: #f2efe6;
+            --muted: #b5b1a8;
+            --line: #2e2e2e;
+            --accent: #ff7a1a;
         }
-        .followers strong { font-size: 1.5rem; }
-        .reel-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 62%; gap: .75rem; margin-top: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; }
-        .reel-grid figure { margin: 0; scroll-snap-align: start; }
-        .reel-grid video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; background: #f5f5f5; }
-        .reel-grid figcaption { margin-top: .4rem; }
-        .reel-grid + p, .photo-grid + p { margin-top: 1rem; }
-        .photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
-        .photo-grid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; background: #f5f5f5; }
-        .mini-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
-        .mini { border: 1px solid #ccc; padding: 1rem; display: flex; flex-direction: column; gap: .35rem; }
-        .mini img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #f5f5f5; margin-bottom: .25rem; }
-        .mini .tag { align-self: flex-start; font-size: .75rem; color: #555; border: 1px solid #ccc; border-radius: 999px; padding: 0 .5rem; }
-        .mini h3 { margin: 0; font-size: 1rem; }
-        .mini p { margin: 0; }
-        .mini p:last-child { margin-top: auto; }
-        @media (min-width: 560px) {
-            .reel-grid { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 'Space Mono', ui-monospace, monospace; }
+        a { color: inherit; text-decoration: none; }
+        a:hover, a:focus-visible { color: var(--accent); }
+        .wrap { max-width: 1008px; margin: 0 auto; padding: 0 16px; }
+
+        .top { display: flex; justify-content: space-between; align-items: center; padding: 3rem 0 1.75rem; border-bottom: 1px solid var(--line); }
+        .top nav { display: flex; gap: 2rem; font-size: .95rem; }
+        .logo { display: block; width: 44px; height: 48px; }
+
+        .hero { padding: 4.5rem 0 2.5rem; }
+        .hero h1 { margin: 0; font: 700 clamp(3.25rem, 13vw, 7rem)/1 'Pixelify Sans', monospace; letter-spacing: .02em; }
+        .hero h1 span { color: var(--accent); }
+        .hero p { margin: 3.25rem 0 0; font: 400 1.4rem/1.4 'DM Sans', system-ui, sans-serif; color: var(--muted); }
+
+        .main { display: grid; gap: 2.5rem; padding-bottom: 4rem; }
+        .label { margin: 0 0 1.25rem; font-size: .95rem; font-weight: 400; letter-spacing: .06em; color: var(--muted); }
+        .projects { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+        .projects li { display: grid; grid-template-columns: 3rem 1fr; padding: 1.5rem 0 1.6rem; border-bottom: 1px solid var(--line); }
+        .projects li:last-child { border-bottom: 0; }
+        .num { color: var(--accent); font-size: .95rem; padding-top: .35rem; }
+        .projects h3 { margin: 0; font: 500 1.75rem/1.3 'Pixelify Sans', monospace; }
+        .projects h3 a::after { content: " \2197"; font-family: 'Space Mono', monospace; }
+        .projects p { margin: .6rem 0 0; color: var(--muted); letter-spacing: .02em; }
+
+        figure { margin: 0; }
+        figure img { display: block; width: 100%; height: auto; aspect-ratio: 438 / 482; object-fit: cover; filter: grayscale(1); }
+        figcaption { margin-top: 1rem; color: var(--muted); font-size: .95rem; }
+
+        footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem 2rem; padding: 2.25rem 0 3.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .95rem; }
+        footer p { margin: 0; }
+        footer nav { display: flex; gap: 2rem; }
+
+        @media (min-width: 760px) {
+            .main { grid-template-columns: 1fr 1fr; gap: 0 2.75rem; }
+            figure { padding-top: 2.4rem; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Anna Citron</h1>
-        <p>Hello! I am a builder, content creator, and student (at Purdue University).</p>
-        <p> This website is currently (11/4/2026) a work in progress. Please be patient lol.</p>
-    </header>
+    <div class="wrap">
+        <header class="top">
+            <a href="index.html" aria-label="Home">
+                <!-- Pixel-art orange logo -->
+                <svg class="logo" viewBox="0 0 11 12" shape-rendering="crispEdges" aria-hidden="true">
+                    <path fill="#6cbf3a" d="M7 0h3v1H9v1H7zM6 1h1v2H6z"/>
+                    <path fill="#ff7a1a" d="M2 3h7v1h1v1h1v5h-1v1H9v1H2v-1H1v-1H0V5h1V4h1z"/>
+                    <path fill="#ffb066" d="M2 5h1v2H2z"/>
+                </svg>
+            </a>
+            <nav aria-label="Main">
+                <a href="about.html" target="_blank" rel="noopener">about</a>
+                <a href="experience.html" target="_blank" rel="noopener">experience</a>
+            </nav>
+        </header>
 
-    <!-- Numbers come from stats.json, which is updated by hand (followers, totalViews, and each featured video under views).
-         To swap a video, change its files in videos/, its figure here, and its key in stats.json. -->
-    <section aria-label="Instagram videos">
-        <div class="role">
-            <h2><a href="https://www.instagram.com/annacitrus">@annacitrus</a></h2>
-            <p class="followers"><strong data-stat="followers">2,135</strong> followers &middot; <strong data-stat="totalViews">999,525</strong> total views</p>
-        </div>
-        <div class="reel-grid">
+        <section class="hero">
+            <h1>anna <span>citron.</span></h1>
+            <p>maker, content creator, and student at Purdue</p>
+        </section>
+
+        <!-- To add a project, copy one <li> and bump its number.
+             Leave out the <a> in the <h3> for a project with no link (no arrow shows). -->
+        <main class="main">
+            <section aria-labelledby="projects-label">
+                <h2 class="label" id="projects-label">PROJECTS</h2>
+                <ol class="projects">
+                    <li>
+                        <span class="num">01</span>
+                        <div>
+                            <h3><a href="https://www.instagram.com/annacitrus" target="_blank" rel="noopener">@annacitrus</a></h3>
+                            <!-- totalViews comes from stats.json -->
+                            <p><span data-stat="totalViews">1.2M</span> total views on Instagram</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="num">02</span>
+                        <div>
+                            <h3><a href="starkhacks.html" target="_blank" rel="noopener">StarkHacks</a></h3>
+                            <p>2M+ Instagram views and 3,000 applicants</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="num">03</span>
+                        <div>
+                            <h3><a href="https://github.com/annacitrus/2x2-editing-skill" target="_blank" rel="noopener">2X2 Editing Skill</a></h3>
+                            <p>100K views and 5 hours of editing saved in one week</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="num">04</span>
+                        <div>
+                            <h3><a href="arduino-roulette/index.html" target="_blank" rel="noopener">Arduino Roulette</a></h3>
+                            <p>Used by an IoT teacher as a fun class exercise</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="num">05</span>
+                        <div>
+                            <h3>Electronics Project</h3>
+                            <p>A way to communicate with my little cousin</p>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
             <figure>
-                <video controls playsinline preload="none" width="720" height="1280" poster="videos/DesBgHXxbR7.jpg" src="videos/DesBgHXxbR7.mp4" aria-label="love electronics"></video>
-                <figcaption class="details"><a href="https://www.instagram.com/p/DesBgHXxbR7/"><span data-stat="DesBgHXxbR7">1 million</span> views</a></figcaption>
+                <img src="images/starkhacks-robot.jpg" width="554" height="554" alt="A humanoid robot mid-dance on the floor at StarkHacks">
+                <figcaption>At StarkHacks</figcaption>
             </figure>
-            <figure>
-                <video controls playsinline preload="none" width="720" height="1280" poster="videos/De2VRCCRQQS.jpg" src="videos/De2VRCCRQQS.mp4" aria-label="u can learn electronics literally for free"></video>
-                <figcaption class="details"><a href="https://www.instagram.com/p/De2VRCCRQQS/"><span data-stat="De2VRCCRQQS">48,200</span> views</a></figcaption>
-            </figure>
-            <figure>
-                <video controls playsinline preload="none" width="720" height="1280" poster="videos/DWE3km9jqR5.jpg" src="videos/DWE3km9jqR5.mp4" aria-label="how i became the most unathletic varsity captain in schools history"></video>
-                <figcaption class="details"><a href="https://www.instagram.com/reel/DWE3km9jqR5/"><span data-stat="DWE3km9jqR5">179,249</span> views</a></figcaption>
-            </figure>
-        </div>
-        <p><a href="growth.html">How I&rsquo;m growing my account</a></p>
-    </section>
+        </main>
 
-    <section aria-labelledby="starkhacks">
-        <h2 id="starkhacks"><a href="https://starkhacks.com/">StarkHacks</a></h2>
-        <p>Headed marketing, getting over <strong>2 million views</strong> on Instagram &amp; <strong>3,000 applicants</strong> from 10 countries &mdash; the <strong>largest</strong> hardware hackathon in the world.</p>
-        <div class="photo-grid">
-            <img src="images/starkhacks-logo.png" width="553" height="723" alt="StarkHacks logo">
-            <img src="images/starkhacks-robot.jpg" width="554" height="554" alt="A humanoid robot mid-move on the StarkHacks floor">
-            <img src="images/starkhacks-crowd.jpg" width="547" height="365" alt="Hackers building at rows of tables inside the StarkHacks hangar">
-        </div>
-        <p><a href="starkhacks.html">How I grew StarkHacks</a></p>
-    </section>
-
-    <!-- Small projects: copy one <article class="mini"> to add another. Tag is a short label (Tool, Electronics, Game, Skill...). -->
-    <section aria-labelledby="small">
-        <h2 id="small">Small projects</h2>
-        <div class="mini-grid">
-            <article class="mini">
-                <!-- Optional image: <img src="images/[file].jpg" alt="[What the image shows]"> -->
-                <h3>Arudino Roulette</h3>
-                <p class="details">Make a project with randrom parts! Used by an IoT teacher.</p>
-                <p><a href="arduino-roulette/index.html">Try it &rarr;</a></p>
-            </article>
-            <article class="mini">
-                <!-- Optional image: <img src="images/[file].jpg" alt="[What the image shows]"> -->
-                <h3>2x2 Editing Skill</h3>
-                <!-- <p class="details">Throw in a rough video, the skill handles the rough cut, adding the background photos, generating captions, and putting on music.</p> -->
-                <p class="details">Within one week this skill got me 100k views and saved me 5 hours of editing.</p>
-                <p><a href="https://github.com/annacitrus/2x2-editing-skill">View &rarr;</a></p>
-            </article>
-            <article class="mini">
-                <!-- Optional image: <img src="images/[file].jpg" alt="[What the image shows]"> -->
-                <h3>Electronics Project</h3>
-                <p class="details">A way to communicate with my little cousin.</p>
-                <p><a href="[URL]">Build notes &rarr;</a></p>
-            </article>
-        </div>
-    </section>
-
-
-    <h2> This website is a work in progress </h2>
-    <p><a href="experience.html">Check out my experience</a></p>
-    <!-- <p><a href="projects.html">Check out my projects</a></p> -->
-    <!-- <p><a href="ugc-portfolio.html">Check out my UGC portfolio</a></p> -->
-    <p><a href="about.html">About me</a></p>
-	<p> See my Instagram where I document what I build <a href="https://www.instagram.com/annacitrus"> here </a> </p>
-	<a href = "https://github.com/annacitrus?tab=repositories"> github </a>
-    <!-- <p><a href="easter-egg.html">Easter Egg</a></p> -->
+        <footer>
+            <p>Anna Citron / @annacitrus</p>
+            <nav aria-label="Social">
+                <a href="https://www.instagram.com/annacitrus" target="_blank" rel="noopener">Instagram &nearr;</a>
+                <a href="https://github.com/annacitrus?tab=repositories" target="_blank" rel="noopener">GitHub &nearr;</a>
+            </nav>
+        </footer>
+    </div>
 
     <script>
-        const videos = document.querySelectorAll('.reel-grid video');
-        videos.forEach(video => video.addEventListener('play', () => {
-            videos.forEach(other => { if (other !== video) other.pause(); });
-        }));
-
+        // Fills in numbers from stats.json (edit that file by hand to update them).
         fetch('stats.json', { cache: 'no-store' })
             .then(response => response.json())
             .then(stats => {
+                const compact = new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 });
                 document.querySelectorAll('[data-stat]').forEach(el => {
-                    const key = el.dataset.stat;
-                    const value = key in stats && key !== 'views' ? stats[key] : stats.views[key];
-                    if (typeof value === 'number') el.textContent = value.toLocaleString('en-US');
+                    const value = stats[el.dataset.stat];
+                    if (typeof value === 'number') el.textContent = compact.format(value);
                 });
             })
             .catch(() => {});
