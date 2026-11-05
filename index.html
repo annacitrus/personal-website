@@ -29,6 +29,13 @@
         .reel-grid + p, .photo-grid + p { margin-top: 1rem; }
         .photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
         .photo-grid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; background: #f5f5f5; }
+        .mini-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+        .mini { border: 1px solid #ccc; padding: 1rem; display: flex; flex-direction: column; gap: .35rem; }
+        .mini img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #f5f5f5; margin-bottom: .25rem; }
+        .mini .tag { align-self: flex-start; font-size: .75rem; color: #555; border: 1px solid #ccc; border-radius: 999px; padding: 0 .5rem; }
+        .mini h3 { margin: 0; font-size: 1rem; }
+        .mini p { margin: 0; }
+        .mini p:last-child { margin-top: auto; }
         @media (min-width: 560px) {
             .reel-grid { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; }
         }
@@ -38,6 +45,7 @@
     <header>
         <h1>Anna Citron</h1>
         <p>Hello! I am a builder, content creator, and student (at Purdue University).</p>
+        <p> This website is currently (11/4/2026) a work in progress. Please be patient lol.</p>
     </header>
 
     <!-- Numbers come from stats.json, which is updated by hand (followers, totalViews, and each featured video under views).
@@ -74,6 +82,33 @@
         </div>
         <p><a href="starkhacks.html">How I grew StarkHacks</a></p>
     </section>
+
+    <!-- Small projects: copy one <article class="mini"> to add another. Tag is a short label (Tool, Electronics, Game, Skill...). -->
+    <section aria-labelledby="small">
+        <h2 id="small">Small projects</h2>
+        <div class="mini-grid">
+            <article class="mini">
+                <!-- Optional image: <img src="images/[file].jpg" alt="[What the image shows]"> -->
+                <h3>Arudino Roulette</h3>
+                <p class="details">Make a project with randrom parts! Used by an IoT teacher.</p>
+                <p><a href="arduino-roulette/">Try it &rarr;</a></p>
+            </article>
+            <article class="mini">
+                <!-- Optional image: <img src="images/[file].jpg" alt="[What the image shows]"> -->
+                <h3>2x2 Editing Skill</h3>
+                <!-- <p class="details">Throw in a rough video, the skill handles the rough cut, adding the background photos, generating captions, and putting on music.</p> -->
+                <p class="details">Within one week this skill got me 100k views and saved me 5 hours of editing.</p>
+                <p><a href="https://github.com/annacitrus/2x2-editing-skill">View &rarr;</a></p>
+            </article>
+            <article class="mini">
+                <!-- Optional image: <img src="images/[file].jpg" alt="[What the image shows]"> -->
+                <h3>Electronics Project</h3>
+                <p class="details">A way to communicate with my little cousin.</p>
+                <p><a href="[URL]">Build notes &rarr;</a></p>
+            </article>
+        </div>
+    </section>
+
 
     <h2> This website is a work in progress </h2>
     <p><a href="experience.html">Check out my experience</a></p>
