@@ -45,11 +45,17 @@
         figure img { display: block; width: 100%; height: auto; aspect-ratio: 438 / 482; object-fit: cover; filter: grayscale(1); }
         figcaption { margin-top: 1rem; color: var(--muted); font-size: .95rem; }
 
-        footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1rem 2rem; padding: 2.25rem 0 3.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .95rem; }
+        footer { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: .5rem; padding: 2.25rem 0 3.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .95rem; }
         footer p { margin: 0; }
-        footer nav { display: flex; gap: 2rem; }
-        .webring { flex-basis: 100%; justify-content: center; gap: .125rem; }
+        .social { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .25rem 2rem; }
+        .social a { white-space: nowrap; }
+        .webring { display: flex; gap: .125rem; }
         .webring a { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; font-size: 1.25rem; }
+
+        @media (max-width: 420px) {
+            footer { font-size: .8125rem; }
+            .webring a { width: 1.75rem; }
+        }
 
         @media (min-width: 760px) {
             .main { grid-template-columns: 1fr 1fr; gap: 0 2.75rem; }
@@ -132,14 +138,14 @@
 
         <footer>
             <p>Anna Citron / @annacitrus</p>
-            <nav aria-label="Social">
-                <a href="https://www.instagram.com/annacitrus" target="_blank" rel="noopener">Instagram &nearr;</a>
-                <a href="https://github.com/annacitrus?tab=repositories" target="_blank" rel="noopener">GitHub &nearr;</a>
-            </nav>
             <nav class="webring" aria-label="Purdue Hackers webring">
                 <a href="https://ring.purduehackers.com/previous" referrerpolicy="origin" aria-label="Previous site in the webring">&larr;</a>
                 <a href="https://ring.purduehackers.com/"><img src="images/webring-logo.svg" width="24" height="24" alt="Purdue Hackers webring directory"></a>
                 <a href="https://ring.purduehackers.com/next" referrerpolicy="origin" aria-label="Next site in the webring">&rarr;</a>
+            </nav>
+            <nav class="social" aria-label="Social">
+                <a href="https://www.instagram.com/annacitrus" target="_blank" rel="noopener">Instagram &nearr;</a>
+                <a href="https://github.com/annacitrus?tab=repositories" target="_blank" rel="noopener">GitHub &nearr;</a>
             </nav>
         </footer>
     </div>
